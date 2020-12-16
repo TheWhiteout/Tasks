@@ -10,8 +10,8 @@ public class Account {
 	}
 
 	Account(int id, double balance) {
-		this.id = id;
-		this.balance = balance;
+		setId(id);
+		setBalance(balance);
 	}
 
 	void setId(int id) {
@@ -55,14 +55,17 @@ public class Account {
 	}
 
 	public void withdraw(double x) {
-		if (x > balance) {
-			System.out.println("Balance too low.");
-			return;
-		}
+		/*
+		 * if (x > balance) { System.out.println("Balance too low."); return; }
+		 */
 		if (x < 0) {
 			System.out.println("Incorrect value.");
 			return;
 		}
 		balance -= x;
+	}
+
+	public String toString() {
+		return "Balance " + balance;
 	}
 }

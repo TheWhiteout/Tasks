@@ -1,15 +1,17 @@
 
-public class SavingsAccount extends Account {
+public class CheckingAccount extends Account {
 
-	SavingsAccount() {
+	private static final double overdraftLimit = 1000;
+
+	CheckingAccount() {
 	}
 
-	SavingsAccount(int id, double balance) {
+	CheckingAccount(int id, double balance) {
 		super(id, balance);
 	}
 
 	public void withdraw(double x) {
-		if (x > super.getBalance()) {
+		if (x > super.getBalance() + overdraftLimit) {
 			System.out.println("Balance too low.");
 			return;
 		}
@@ -19,10 +21,9 @@ public class SavingsAccount extends Account {
 			return;
 		}
 		super.setBalance(super.getBalance() - x);
-		;
 	}
 
 	public String toString() {
-		return super.toString() + "\nSavings Account";
+		return super.toString() + "\nChecking Account";
 	}
 }
